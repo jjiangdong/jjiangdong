@@ -37,6 +37,7 @@ public class LoginGlobalFilter implements GlobalFilter, Ordered {
         }
         // 如果登录，则放行
         return chain.filter(exchange);
+        1111111111111111111111111111111
     }
 
     /***
