@@ -25,6 +25,7 @@ public class LoginGlobalFilter implements GlobalFilter, Ordered {
         // 如果token为空，则表示没有登录
         if (StringUtils.isEmpty(token)){
             // 没有登录，则设置状态码为403
+            int aaaa = 6666;
             exchange.getResponse().setStatusCode(HttpStatus.PAYLOAD_TOO_LARGE);
             // 结束请求
             return exchange.getResponse().setComplete();
