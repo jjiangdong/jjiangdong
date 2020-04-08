@@ -18,6 +18,7 @@ public class LoginGlobalFilter implements GlobalFilter, Ordered {
      * @param chain
      * @return
      */
+    哈哈哈哈哈哈哈哈哈哈
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         // 获取请求参数
