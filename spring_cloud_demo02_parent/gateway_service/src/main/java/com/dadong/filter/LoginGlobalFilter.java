@@ -38,8 +38,7 @@ public class LoginGlobalFilter implements GlobalFilter, Ordered {
         }
         // 如果登录，则放行
         return chain.filter(exchange);
-        不不不不不不不不不不不不不
-    }
+        222222222222222222222222222222     }
 
     /***
      * 定义过滤器执行顺序，返回值越小，越靠前执行
