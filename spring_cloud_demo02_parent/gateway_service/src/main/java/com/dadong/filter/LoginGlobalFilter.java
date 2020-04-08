@@ -22,6 +22,8 @@ public class LoginGlobalFilter implements GlobalFilter, Ordered {
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         // 获取请求参数
         String token = exchange.getRequest().getQueryParams().getFirst("token");
+        int bb = 6666666;
+        sssssssssssssssssssssss
         // 如果token为空，则表示没有登录
         String str = "bbbbbbbbbbbbbbbbbbbbbbbbbbb";
         if (StringUtils.isEmpty(token)){
