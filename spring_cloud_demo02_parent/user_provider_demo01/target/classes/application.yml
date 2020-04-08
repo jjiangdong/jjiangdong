@@ -1,0 +1,43 @@
+#配置端口号及路径
+server:
+  port: 18083
+
+# 配置eureka
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka # eurekaserver的地址
+      # 每隔30S获取服务中心列表（只读备份）
+    registry-fetch-interval-seconds: 30
+  # 配置服务的ip地址
+  instance:
+    # 指定ip地址
+    ip-address: 127.0.0.1
+    # 访问服务的时候，推荐使用ip
+    prefer-ip-address: true
+    # 租约到期，服务有效时间，默认值90S
+    lease-expiration-duration-in-seconds: 150
+    # 租约续约间隔时间，默认30s
+    lease-renewal-interval-in-seconds: 50
+
+#配置数据源
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost/spring-cloud?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    driver-class-name: com.mysql.jdbc.Driver
+  # 修改服务名称
+  application:
+    name: user-provider
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    database: mysql
+
+# 日志配置
+logging:
+  level:
+    com.dadong: debug

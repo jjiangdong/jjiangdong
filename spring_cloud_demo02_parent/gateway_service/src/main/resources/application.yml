@@ -1,0 +1,34 @@
+# 指定端口号
+server:
+  port: 18084
+
+# 指定服务名称
+spring:
+  application:
+    name: api-geteway
+  # 配置路由和断言
+  cloud:
+    gateway:
+      routes:
+          #id唯一标识，可自定义
+          - id: user-service-route
+            #路由的服务地址
+            uri: lb://user-provider
+            # 路由拦截的地址配置（断言）
+            predicates:
+              - Path=/**
+           # filters:
+              # 请求地址添加路径前缀过滤器
+              #- PrefixPath=/user
+              # 去除路径前缀过滤器
+              # - StripPrefix=1
+      # 配置全局默认过滤器
+      default-filters:
+        # 向响应过滤器中加入信息
+        - AddResponseHeader=X-Response-Default-MyName,itheima
+
+# 配置Eureka服务中心配置
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka

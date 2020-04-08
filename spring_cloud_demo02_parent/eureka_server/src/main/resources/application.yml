@@ -1,0 +1,15 @@
+# 配置端口号
+server:
+  port: 7001
+# 配置eureka
+eureka:
+  client:
+    register-with-eureka: false # 是否将自身注册到eureka中
+    fetch-registry: false # 是否从eureka中获取服务信息
+    service-url:
+      defaultZone: http://localhost:7001/eureka # eurekaserver的地址
+  server:
+    # 服务中心对无效的服务进行剔除，间隔时间单位毫秒
+    # eviction-interval-timer-in-ms: 5000
+    # 关闭自我保护模式
+    # enable-self-preservation: false

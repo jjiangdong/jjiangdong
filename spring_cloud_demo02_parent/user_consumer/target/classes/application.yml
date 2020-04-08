@@ -1,0 +1,67 @@
+server:
+  port: 18082
+# 指定Eureka服务名称
+spring:
+  application:
+    name: user-consumer
+# 指定Eureka服务地址
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka # eurekaserver的地址
+    register-with-eureka: true # 服务需要自己注册到Eureka中
+    fetch-registry: true # 自己从Eureka中获取服务信息
+
+# 修改服务负载均衡规则
+# user-provider:
+  # ribbon:
+    # # 轮询
+    # NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
+    # ConnectTimeout: 10000 # 连接超时时间
+    # ReadTimeout: 2000 # 数据读取超时时间
+    # MaxAutoRetries: 1 # 最大重试次数(第一个服务)
+    # MaxAutoRetriesNextServer: 0 # 最大重试下一个服务次数(集群的情况才会用到)
+    # OkToRetryOnAllOperations: false # 无论是请求超时或者socket read timeout都进行重试
+    # 随机算法
+    # NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+    # 重试算法
+    # NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RetryRule
+    # 加权法
+    # NFLoadBalancerRuleClassName: com.netflix.loadbalancer.ZoneAvoidanceRule
+
+# 配置熔断策略：
+hystrix:
+  command:
+    default:
+      circuitBreaker:
+        # 强制打开熔断器 默认false关闭的。测试配置是否生效
+        forceOpen: false
+        # 触发熔断错误比例阈值，默认值50%
+        errorThresholdPercentage: 50
+        # 熔断后休眠时长，默认值5秒
+        sleepWindowInMilliseconds: 10000
+        # 熔断触发最小请求次数，默认值是20
+        requestVolumeThreshold: 10
+      execution:
+        isolation:
+          thread:
+            # 熔断超时设置，默认为1秒
+            timeoutInMilliseconds: 2000
+
+# feign的熔断支持
+feign:
+  hystrix:
+    enabled: true # 开启feign的熔断功能
+  # 配置请求压缩
+  compression:
+    request:
+      enabled: true # 开启请求压缩
+      mime-types: text/html,application/xml,application/json # 设置压缩的数据类型
+      min-request-size: 2048 # 设置触发压缩的大小的下限
+    response:
+      enabled: true # 开启响应压缩
+
+# 日志配置
+logging:
+  level:
+    com.dadong: debug
