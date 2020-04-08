@@ -21,6 +21,7 @@ public class LoginGlobalFilter implements GlobalFilter, Ordered {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         // 获取请求参数
+        5555555555555555555555
         String token = exchange.getRequest().getQueryParams().getFirst("token");
         int bb = 6666666;
         sssssssssssssssssssssss
