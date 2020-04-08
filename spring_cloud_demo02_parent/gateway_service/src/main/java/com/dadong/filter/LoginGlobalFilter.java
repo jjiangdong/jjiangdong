@@ -21,11 +21,11 @@ public class LoginGlobalFilter implements GlobalFilter, Ordered {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         // 获取请求参数
-        5555555555555555555555
-        String token = exchange.getRequest().getQueryParams().getFirst("token");
+        5555555555555555555555        hahahahhahahaahhahahahah        String token = exchange.getRequest().getQueryParams().getFirst("token");
         int bb = 6666666;
         sssssssssssssssssssssss
         // 如果token为空，则表示没有登录
+        String str = "bbbbbbbbbbbbbbbbbbbbbbbbbbb";
         if (StringUtils.isEmpty(token)){
             // 没有登录，则设置状态码为403
             int aaaa = 6666;
